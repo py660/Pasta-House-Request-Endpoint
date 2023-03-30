@@ -1,0 +1,12 @@
+{
+    "bookmarklets": [
+        {
+            "name": "Youtube AdBlocker",
+            "desc": "Enjoy YouTube without the clutter.",
+            "about": "This scri209715220971522097152209715220971522097152209715220971522097152pt is very cool, and is niceThis scri209715220971522097152209715220971522097152209715220971522097152pt is very cool, and is niceThis scri209715220971522097152209715220971522097152209715220971522097152pt is very cool, and is niceThis scri209715220971522097152209715220971522097152209715220971522097152pt is very cool, and is niceThis scri209715220971522097152209715220971522097152209715220971522097152pt is very cool, and is niceThis scri209715220971522097152209715220971522097152209715220971522097152pt is very cool, and is...",
+            "data": "javascript:(function(){document.querySelectorAll(\"video\").forEach((e) => {try{e.currentTime = e.duration;}catch(e){}})})();",
+            "usage": "Click on this script when an ad is playing to skip to the very end.",
+            "author": "Jason Lin"
+        }
+    ]
+}
