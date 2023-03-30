@@ -17,6 +17,22 @@ app.get('/demo', function(req, res){
   res.sendFile(__dirname + '/template.html');
 });
 
+/*app.get('/db.json', function(req, res){
+  console.log(req.cookies);
+  res.sendFile(__dirname + '/db.json');
+})
+
+app.post('/db.json', function(req, res){
+  console.log(req.cookies);
+  res.sendFile(__dirname + "/db.json")
+})*/
+
+app.get('/admin', function(req, res){
+  console.log(req.cookies);
+  let existing = JSON.parse(fs.readFileSync("db.json"));
+  res.render('admin.html', { data: existing })
+})
+
 function trim(yourString, maxLength){ // Define trim function
   //var maxLength = 600 // maximum number of characters to extract
   
