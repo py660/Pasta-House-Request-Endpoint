@@ -51,7 +51,7 @@ const port = 3000;
 const bodyParser = require('body-parser');
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine('html', require('ejs').renderFile);
-app.use(express.static(__dirname + '/assets'));
+app.use(express.static(__dirname + '/public'));
 const cookieParser = require("cookie-parser");
 app.use(cookieParser());
 
@@ -68,6 +68,10 @@ app.get('/admin', async function(req, res){
   else{
     res.send("<h1>403 Forbidden</h1><p>Shoo, get out of here.</p>")
   }
+})
+
+app.get('/db.json', function(req, res){
+  res.sendFile("db.json");
 })
 
 function trim(yourString, maxLength){ // Define trim function
