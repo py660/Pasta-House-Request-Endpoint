@@ -71,7 +71,13 @@ app.get('/admin', async function(req, res){
 })
 
 app.get('/db.json', function(req, res){
-  res.sendFile("db.json");
+  if (req.cookies.PW == process.env.PW){
+    let existing = read("db.json");
+    res.json(existing);
+  }
+  else{
+    res.send("Unauthorized");
+  }
 })
 
 function trim(yourString, maxLength){ // Define trim function
