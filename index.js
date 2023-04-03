@@ -1,6 +1,6 @@
 (async() => {
 
-let RESET = true;
+let RESET = false;
 
 const express = require('express');
 let   request = require('request');
