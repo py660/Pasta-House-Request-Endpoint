@@ -1,5 +1,7 @@
 (async() => {
 
+let RESET = true;
+
 const express = require('express');
 let   request = require('request');
 const j = request.jar();
@@ -40,8 +42,10 @@ function read(filename){
   });
 }
 
-//console.log(await write("db.json", {"bookmarklets": []}))
-//console.log(await read("db.json"))
+if (RESET){
+  console.log(await write("db.json", {"bookmarklets": []}))
+  console.log(await read("db.json"))
+}
 
 //const fs = require('fs');
 //const fs = require('@cyclic.sh/s3fs') 
@@ -70,9 +74,19 @@ app.get('/admin', async function(req, res){
   }
 })
 
-app.get('/db.json', function(req, res){
+app.get('/view', async function(req, res){
+  console.log(req.cookies);
   if (req.cookies.PW == process.env.PW){
-    let existing = read("db.json");
+    res.sendFile(__dirname + '/admin.html');
+  }
+  else{
+    res.send("<h1>403 Forbidden</h1><p>Shoo, get out of here.</p>");
+  }
+})
+
+app.get('/db.json', async function(req, res){
+  if (req.cookies.PW == process.env.PW){
+    let existing = await read("db.json");
     res.json(existing);
   }
   else{
@@ -101,7 +115,8 @@ app.post('/submit', async function(req, res){
   console.log(req.body);
   let body = req.body;
   cleaned = {
-    name: trim(body.name, 50),
+    timestamp: Math.floor(Date.now()/1000),
+    title: trim(body.name, 50),
     desc: trim(body.desc, 200),
     about: trim(body.about, 600),
     data: trim(body.data, 2097152),
