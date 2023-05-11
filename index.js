@@ -94,6 +94,15 @@ app.get('/db.json', async function(req, res){
   }
 })
 
+app.put('/db.json', async function(req, res){
+  if (req.cookies.PW == process.env.PW){
+    write('db.json', req.json);
+  }
+  else{
+    res.write("403 Forbidden")
+  }
+})
+
 function trim(yourString, maxLength){ // Define trim function
   //var maxLength = 600 // maximum number of characters to extract
   
