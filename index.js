@@ -46,6 +46,21 @@ if (RESET){
   console.log(await write("db.json", {"bookmarklets": []}))
   console.log(await read("db.json"))
 }
+  
+function timify(unix_timestamp){
+  var date = new Date(unix_timestamp * 1000);
+  // Hours part from the timestamp
+  var hours = date.getHours();
+  // Minutes part from the timestamp
+  var minutes = "0" + date.getMinutes();
+  // Seconds part from the timestamp
+  var seconds = "0" + date.getSeconds();
+
+  // Will display time in 10:30:23 format
+  var formattedTime = hours + ':' + minutes.substr(-2) + ':' + seconds.substr(-2);
+
+  return formattedTime;
+}
 
 //const fs = require('fs');
 //const fs = require('@cyclic.sh/s3fs') 
@@ -134,7 +149,7 @@ app.post('/submit', async function(req, res){
   }
   console.log(cleaned);
   console.log("-" * 70);
-  res.render('index.html', { data: cleaned });
+  res.render('index.html', { data: cleaned, timify: timeify });
   let existing = await read("db.json");
   //let existing = JSON.parse(fs.readFileSync("db.json"));
   console.log(existing.bookmarklets);
