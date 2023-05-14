@@ -149,7 +149,7 @@ app.post('/submit', async function(req, res){
   }
   console.log(cleaned);
   console.log("-" * 70);
-  res.render('index.html', { data: cleaned, timify: timeify });
+  res.render('index.html', { data: cleaned, timify: timify });
   let existing = await read("db.json");
   //let existing = JSON.parse(fs.readFileSync("db.json"));
   console.log(existing.bookmarklets);
