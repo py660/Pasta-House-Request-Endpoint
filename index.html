@@ -25,8 +25,20 @@
         </style>
     </head>
     <body>
+        <script>
+            function verifyCode(code){
+                if (!code.startsWith("javascript:")){
+                    document.getElementById("err_code").innerHTML = "Ensure that your code starts with \"javascript:\"";
+                    return false;
+                }
+                else{
+                    document.getElementById("err_code").innerHTML = "";
+                    return true;
+                }
+            }
+        </script>
         <h1>Pasta House Code Requisition Form: Revision 5</h1>
-        <form action="/submit" method="post" onsubmit="return confirm('Do you really want to submit the form?\n\nYour submission will be permanently added to the public bookmarklet list if approved.');">
+        <form action="/submit" method="post" onsubmit="return (verifyCode(document.getElementById('data')) && confirm('Do you really want to submit the form?\n\nYour submission will be permanently added to the public bookmarklet list if approved.'));">
             <span>
                 <label for="name">Title<span style="color: red">*</span>: </label>
                 <input maxlength="50" type="text" name="name" id="name" placeholder="My Cool Animation Effect" required/>
@@ -44,7 +56,7 @@
             </span>
             <span>
                 <label for="data">Code<span style="color: red">*</span>: </label>
-                <input maxlength="2097152" type="text" name="data" id="data" placeholder="javascript: void(document.designMode = 'on')" required/>
+                <input maxlength="2097152" type="text" name="data" id="data" placeholder="javascript: void(document.designMode = 'on')" oninput="verifyCode(this.value);" required/>
                 <br/>
             </span>
             <span>
@@ -59,6 +71,7 @@
                 <p style="color: red">TAKE THIS FORM SERIOUSLY: All malformed requests (including inappropriate nicknames) will be ignored. Aliases are fine.</p>
             </span>
             <input type="submit" value="Submit (NO TAKEBACKS)"/>
+            <p id="err_code"></p>
         </form>
     </body>
 </html>
