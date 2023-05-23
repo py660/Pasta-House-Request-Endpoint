@@ -140,12 +140,12 @@ app.post('/submit', async function(req, res){
   let body = req.body;
   cleaned = {
     timestamp: Math.floor(Date.now()/1000),
-    title: trim(body.name, 50).replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';'),
-    desc: trim(body.desc, 200).replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';'),
-    about: trim(body.about, 600).replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';'),
-    data: trim(body.data, 2097152).replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';'),
-    usage: trim(body.usage, 300).replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';'),
-    author: trim(body.author, 50).replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')
+    title: trim(body.name, 50)/*.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')*/,
+    desc: trim(body.desc, 200)/*.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')*/,
+    about: trim(body.about, 600)/*.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')*/,
+    data: trim(body.data, 2097152)/*.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')*/,
+    usage: trim(body.usage, 300)/*.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')*/,
+    author: trim(body.author, 50)/*.replace(/[\u00A0-\u9999<>\&]/g, i => '&#'+i.charCodeAt(0)+';')*/
   }
   console.log(cleaned);
   console.log("-" * 70);
