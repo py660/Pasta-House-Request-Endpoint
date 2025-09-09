@@ -1,9 +1,9 @@
 {
   "dependencies": {
     "@cyclic.sh/s3fs": "^1.2.8",
-    "cookie-parser": "^1.4.6",
+    "cookie-parser": "^1.4.7",
     "ejs": "^3.1.10",
-    "express": "^4.19.2",
+    "express": "^4.21.2",
     "request": "^2.88.2"
   }
 }
